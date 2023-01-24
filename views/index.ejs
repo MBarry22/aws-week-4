@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>My Image App</title>
+</head>
+<body>
+<style>
+  body{
+    display: flex;
+    background-color: rgb(2, 2, 2);
+   
+  }
+  img{
+    margin-top: 40px;
+    height: 300px;
+    width: 450px;
+    border: 2px solid white;
+    margin-right: 20px;
+    
+  }
+  p{
+    color: white;
+    justify-content: center;
+    text-align: center;
+  }
+  form{
+    position: fixed;
+    top: 75%;
+    right: 50%;
+    color: white;
+  }
+</style>
+  
+  <% images.forEach(image => { %>
+    <li  style="list-style:none" >
+      <img src="<%= image.file_path %>">
+      <p><%= image.description %></p>
+    </li>
+<% }) %>
+
+<form action="/saveImage" method="post" enctype="multipart/form-data">
+  <p style="font-size: 20px;">Upload An Image!</p>
+  <input type="file" name="image" accept="image/*">
+  <br>
+  <br>
+  <input type="text" name="description" placeholder="Description">
+  <br>
+  <br>
+  <button type="submit" name="submit">UPLOAD</button>
+</form>
+
+</body>
+</html>
